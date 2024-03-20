@@ -1,0 +1,94 @@
+<!doctype html>
+<html xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Talap</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/cover/">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <link href="cover.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Talap</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link" href="/">Главная</a>
+            <a class="nav-link active" href="/tasks">Задачи</a>
+            <a class="nav-link" href="mailto: aibarchik2019@gmail.com">Написать на почту</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        <div class="card">
+            <div class="card-header">
+                Задача №1
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Среднее число</h5>
+                <p class="card-text">Введите числа чтобы получить среднее число. Например: 1, 2, 3</p>
+                <form action="#" th:action="@{/tasks}" th:object="${task1}" method="post">
+                    <p>Числа: <input type="text" th:field="*{numbers}" /></p>
+                    <p><input type="submit" class="btn btn-dark" value="Отправить" /> </p>
+                </form>
+                <p th:text="${task1.averageNumber}? 'Результат: ' + ${task1.averageNumber}" />
+                <p th:if="${task1.errorMessage}" th:text="${task1.errorMessage}" style="color: red;"></p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                Задача №2
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Палиндром</h5>
+                <p class="card-text">Введите слово чтобы проверить на палиндромность. Например: radar</p>
+                <form action="#" th:action="@{/tasks}" th:object="${task2}" method="post">
+                    <p>Слово: <input type="text" th:field="*{word}" /></p>
+                    <p><input type="submit" class="btn btn-dark" value="Отправить" /> </p>
+                </form>
+                <p th:text="'Результат: ' + ${task2.isPalindrome}" />
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                Задача №3
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Реверс числа</h5>
+                <p class="card-text">Введите число чтобы получить те же цифры в обратном порядке. Например: 1230 -> 321</p>
+                <form action="#" th:action="@{/tasks}" th:object="${task3}" method="post">
+                    <p>Число: <input type="text" th:field="*{number}" /></p>
+                    <p><input type="submit" class="btn btn-dark" value="Отправить" /> </p>
+                </form>
+                <p th:text="${task3.reversedNumber}? 'Результат: ' + ${task3.reversedNumber}" />
+                <p th:if="${task3.errorMessage}" th:text="${task3.errorMessage}" style="color: red;"></p>
+            </div>
+        </div>
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p> <a href="https://github.com/IkayevAibar">IkayevAibar</a></p>
+        </div>
+      </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
+<!DOCTYPE HTML>
